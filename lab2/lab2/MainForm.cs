@@ -19,21 +19,17 @@ namespace lab2
         public MainForm()
         {
             InitializeComponent();
-            addForm = new AddForm();
             item_ = new Item("", 0, 0);
             items = new List<Item>();
+            addForm = new AddForm(items, LstVw);
             btn_Task.Enabled = false;
         }
 
-        private void brn_add_Click(object sender, EventArgs e)
+        private void btn_add_Click(object sender, EventArgs e)
         {
-            if (addForm.addItem())
-            {
-                item_ = addForm.item;
-                items.Add(new Item(item_.name, item_.weigth, item_.price));
-                LstVw.Items.Add(new ListViewItem(new string[] { item_.name, item_.weigth.ToString(), item_.price.ToString() }));
-                btn_Task.Enabled = true;
-            }
+            addForm.Visible = true;
+            if (items != null) 
+               btn_Task.Enabled = true;
         }
 
         private void showItems(List<Item> _items)
@@ -49,14 +45,18 @@ namespace lab2
 
         private void btn_Task_Click(object sender, EventArgs e)
         {
-            if (num_size.Value == 0)
+            int maxW = Convert.ToInt32(num_size.Value);
+            if (maxW == 0)
             {
                 MessageBox.Show("Максимальный вес рюкзака не может быть равен 0!");
             }
             else
             {
-                Backpack bp = new Backpack(Convert.ToInt32(num_size.Value));
-                bp.makeAllSets(items);
+                Backpack bp = new Backpack(maxW);
+
+                bp.dinamicAlg(items);
+                bp.thingsInBackpack(items.Count, items, maxW);
+
                 List<Item> solve = bp.getBestSet();
 
                 if (solve == null)

@@ -33,9 +33,10 @@
             this.lb_price = new System.Windows.Forms.Label();
             this.num_weight = new System.Windows.Forms.NumericUpDown();
             this.num_price = new System.Windows.Forms.NumericUpDown();
-            this.tb_name = new System.Windows.Forms.TextBox();
             this.btn_OK = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.cmBox_name = new System.Windows.Forms.ComboBox();
+            this.btn_more = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_weight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_price)).BeginInit();
             this.SuspendLayout();
@@ -84,20 +85,13 @@
             this.num_price.Size = new System.Drawing.Size(120, 20);
             this.num_price.TabIndex = 4;
             // 
-            // tb_name
-            // 
-            this.tb_name.Location = new System.Drawing.Point(95, 18);
-            this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(232, 20);
-            this.tb_name.TabIndex = 5;
-            // 
             // btn_OK
             // 
             this.btn_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_OK.Location = new System.Drawing.Point(15, 159);
+            this.btn_OK.Location = new System.Drawing.Point(15, 151);
             this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(126, 30);
+            this.btn_OK.Size = new System.Drawing.Size(129, 38);
             this.btn_OK.TabIndex = 6;
             this.btn_OK.Text = "ОК";
             this.btn_OK.UseVisualStyleBackColor = true;
@@ -107,13 +101,49 @@
             // 
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Cancel.Location = new System.Drawing.Point(201, 159);
+            this.btn_Cancel.Location = new System.Drawing.Point(186, 151);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(126, 30);
+            this.btn_Cancel.Size = new System.Drawing.Size(141, 38);
             this.btn_Cancel.TabIndex = 7;
-            this.btn_Cancel.Text = "Отмена";
+            this.btn_Cancel.Text = "Закрыть";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // cmBox_name
+            // 
+            this.cmBox_name.FormattingEnabled = true;
+            this.cmBox_name.Items.AddRange(new object[] {
+            "Книга",
+            "Тетрадь",
+            "Пенал",
+            "Ручка",
+            "Карандаш",
+            "Телефон",
+            "Компьютер",
+            "Зеркало",
+            "Блокнот",
+            "Учебник",
+            "Вода",
+            "Перекус",
+            "Пудра",
+            "Зарядка",
+            "Ключи"});
+            this.cmBox_name.Location = new System.Drawing.Point(95, 18);
+            this.cmBox_name.Name = "cmBox_name";
+            this.cmBox_name.Size = new System.Drawing.Size(121, 21);
+            this.cmBox_name.TabIndex = 9;
+            // 
+            // btn_more
+            // 
+            this.btn_more.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_more.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_more.Location = new System.Drawing.Point(243, 63);
+            this.btn_more.Name = "btn_more";
+            this.btn_more.Size = new System.Drawing.Size(72, 39);
+            this.btn_more.TabIndex = 8;
+            this.btn_more.Text = "Добавить ещё...";
+            this.btn_more.UseVisualStyleBackColor = true;
+            this.btn_more.Click += new System.EventHandler(this.btn_more_Click);
             // 
             // AddForm
             // 
@@ -122,9 +152,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Cancel;
             this.ClientSize = new System.Drawing.Size(339, 203);
+            this.Controls.Add(this.cmBox_name);
+            this.Controls.Add(this.btn_more);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_OK);
-            this.Controls.Add(this.tb_name);
             this.Controls.Add(this.num_price);
             this.Controls.Add(this.num_weight);
             this.Controls.Add(this.lb_price);
@@ -149,8 +180,9 @@
         private System.Windows.Forms.Label lb_price;
         private System.Windows.Forms.NumericUpDown num_weight;
         private System.Windows.Forms.NumericUpDown num_price;
-        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.Button btn_OK;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.ComboBox cmBox_name;
+        private System.Windows.Forms.Button btn_more;
     }
 }

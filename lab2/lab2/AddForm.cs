@@ -13,39 +13,65 @@ namespace lab2
     public partial class AddForm : Form
     {
         public Item item;
+        List<Item> items;
+        ListView LstVw;
 
-        public AddForm()
+        public AddForm(List<Item> items_, ListView LstVw_)
         {
             InitializeComponent();
             item = new Item("", 0, 0);
+            items = items_;
+            LstVw = LstVw_;
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            if (tb_name.Text.Trim() == "")
+            if (cmBox_name.Text.Trim() == "")
                 MessageBox.Show("Название не указано!");
             else if (num_price.Value == 0 | num_weight.Value == 0)
                 MessageBox.Show("Вес и/или Стоимость не могут равняться 0");
                 else
                 {
-                    item.name = tb_name.Text.Trim();
+                    item.name = cmBox_name.Text.Trim();
                     item.weigth = Convert.ToInt32(num_weight.Value);
                     item.price = Convert.ToInt32(num_price.Value);
-                }
-            Close();
 
-        }
+                    items.Add(new Item(item.name, item.weigth, item.price));
+                    LstVw.Items.Add(new ListViewItem(new string[] { item.name, item.weigth.ToString(), item.price.ToString() }));
 
-        public bool addItem()
-        {
-            tb_name.Clear();
-            num_weight.Value = num_price.Value = 0;
-            return (ShowDialog() == DialogResult.OK & item.name != "" & item.weigth != 0 & item.price != 0);         
+            }
+            this.Visible = false;
+            Empty();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void Empty()
+        {
+            cmBox_name.Text = "";
+            num_weight.Value = num_price.Value = 0;
+        }
+
+        private void btn_more_Click(object sender, EventArgs e)
+        {
+            if (cmBox_name.Text.Trim() == "")
+                MessageBox.Show("Название не указано!");
+            else if (num_price.Value == 0 | num_weight.Value == 0)
+                MessageBox.Show("Вес и/или Стоимость не могут равняться 0");
+            else
+            {
+                item.name = cmBox_name.Text.Trim();
+                item.weigth = Convert.ToInt32(num_weight.Value);
+                item.price = Convert.ToInt32(num_price.Value);
+
+                items.Add(new Item(item.name, item.weigth, item.price));
+                LstVw.Items.Add(new ListViewItem(new string[] { item.name, item.weigth.ToString(), item.price.ToString() }));
+
+            }
+            Empty();
         }
     }
 }

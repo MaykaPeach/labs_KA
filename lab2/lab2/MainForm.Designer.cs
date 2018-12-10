@@ -36,7 +36,7 @@
             this.col_weight = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pan_size = new System.Windows.Forms.Panel();
-            this.brn_add = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.pn_Task = new System.Windows.Forms.Panel();
             this.LstVwTask = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -109,7 +109,7 @@
             // pan_size
             // 
             this.pan_size.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pan_size.Controls.Add(this.brn_add);
+            this.pan_size.Controls.Add(this.btn_add);
             this.pan_size.Controls.Add(this.lb_size);
             this.pan_size.Controls.Add(this.num_size);
             this.pan_size.Location = new System.Drawing.Point(313, 26);
@@ -117,16 +117,16 @@
             this.pan_size.Size = new System.Drawing.Size(198, 164);
             this.pan_size.TabIndex = 4;
             // 
-            // brn_add
+            // btn_add
             // 
-            this.brn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.brn_add.Location = new System.Drawing.Point(27, 98);
-            this.brn_add.Name = "brn_add";
-            this.brn_add.Size = new System.Drawing.Size(139, 43);
-            this.brn_add.TabIndex = 3;
-            this.brn_add.Text = "Добавить вещь";
-            this.brn_add.UseVisualStyleBackColor = true;
-            this.brn_add.Click += new System.EventHandler(this.brn_add_Click);
+            this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_add.Location = new System.Drawing.Point(27, 98);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(139, 43);
+            this.btn_add.TabIndex = 3;
+            this.btn_add.Text = "Добавить вещь";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // pn_Task
             // 
@@ -223,7 +223,7 @@
         private System.Windows.Forms.ColumnHeader col_name;
         private System.Windows.Forms.ColumnHeader col_weight;
         private System.Windows.Forms.ColumnHeader col_price;
-        private System.Windows.Forms.Button brn_add;
+        private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Panel pn_Task;
         private System.Windows.Forms.ListView LstVwTask;
         private System.Windows.Forms.ColumnHeader columnHeader1;
