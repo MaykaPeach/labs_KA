@@ -59,7 +59,7 @@ namespace lab1
 
         private void but_wayOK_Click(object sender, EventArgs e)
         {
-             matr.Leks();
+             matr.Rand();
              MessageBox.Show("Кратчайший путь по маршруту " + matr.getAllWay() + " равен " + matr.getWay().ToString());
         }
 
