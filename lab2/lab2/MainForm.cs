@@ -27,7 +27,12 @@ namespace lab2
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            addForm.Visible = true;
+            if (addForm.IsDisposed)
+                addForm = new AddForm(items, LstVw);
+
+            if (!addForm.Visible)
+                addForm.Show();
+
             if (items != null) 
                btn_Task.Enabled = true;
         }
@@ -69,6 +74,13 @@ namespace lab2
                     showItems(solve);
                 }
             }
+        }
+
+        private void btn_Clear_Click(object sender, EventArgs e)
+        {
+            LstVw.Items.Clear();
+            LstVwTask.Items.Clear();
+            items.Clear();
         }
     }
 }

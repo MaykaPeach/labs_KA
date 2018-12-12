@@ -12,8 +12,6 @@ namespace lab2
 
         private int maxW;
 
-        private int bestPrice;
-
         private int[,] m;
 
         public Backpack(int _maxW)

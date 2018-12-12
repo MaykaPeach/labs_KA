@@ -44,6 +44,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lb_All = new System.Windows.Forms.Label();
             this.lb_Task = new System.Windows.Forms.Label();
+            this.btn_Clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_size)).BeginInit();
             this.pan_size.SuspendLayout();
             this.pn_Task.SuspendLayout();
@@ -52,6 +53,11 @@
             // num_size
             // 
             this.num_size.Location = new System.Drawing.Point(45, 57);
+            this.num_size.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.num_size.Name = "num_size";
             this.num_size.Size = new System.Drawing.Size(109, 20);
             this.num_size.TabIndex = 0;
@@ -69,7 +75,7 @@
             // btn_Task
             // 
             this.btn_Task.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Task.Location = new System.Drawing.Point(27, 44);
+            this.btn_Task.Location = new System.Drawing.Point(27, 20);
             this.btn_Task.Name = "btn_Task";
             this.btn_Task.Size = new System.Drawing.Size(139, 41);
             this.btn_Task.TabIndex = 2;
@@ -109,12 +115,13 @@
             // pan_size
             // 
             this.pan_size.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pan_size.Controls.Add(this.btn_Clear);
             this.pan_size.Controls.Add(this.btn_add);
             this.pan_size.Controls.Add(this.lb_size);
             this.pan_size.Controls.Add(this.num_size);
             this.pan_size.Location = new System.Drawing.Point(313, 26);
             this.pan_size.Name = "pan_size";
-            this.pan_size.Size = new System.Drawing.Size(198, 164);
+            this.pan_size.Size = new System.Drawing.Size(198, 220);
             this.pan_size.TabIndex = 4;
             // 
             // btn_add
@@ -132,9 +139,9 @@
             // 
             this.pn_Task.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pn_Task.Controls.Add(this.btn_Task);
-            this.pn_Task.Location = new System.Drawing.Point(313, 196);
+            this.pn_Task.Location = new System.Drawing.Point(313, 252);
             this.pn_Task.Name = "pn_Task";
-            this.pn_Task.Size = new System.Drawing.Size(198, 137);
+            this.pn_Task.Size = new System.Drawing.Size(198, 81);
             this.pn_Task.TabIndex = 5;
             // 
             // LstVwTask
@@ -186,6 +193,17 @@
             this.lb_Task.TabIndex = 7;
             this.lb_Task.Text = "Результат:";
             // 
+            // btn_Clear
+            // 
+            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Clear.Location = new System.Drawing.Point(27, 158);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(139, 43);
+            this.btn_Clear.TabIndex = 4;
+            this.btn_Clear.Text = "Очистить";
+            this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,6 +249,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label lb_All;
         private System.Windows.Forms.Label lb_Task;
+        private System.Windows.Forms.Button btn_Clear;
     }
 }
 
