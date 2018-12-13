@@ -13,6 +13,7 @@ namespace lab1
     public partial class Salesman : Form
     {
         Matr matr;
+        Algoritm alg;
         int count;
         public Salesman()
         {
@@ -42,12 +43,14 @@ namespace lab1
             {
                 matr.GridToMatrix(GrVw);
                 matr.MatrixToGrid(GrVw, count);
+                alg = new Algoritm(count, matr.GetMatr());
                 return;
             }
             if (radBut_rand.Checked)
             {
                 matr.RandomToMatrix();
                 matr.MatrixToGrid(GrVw, count);
+                alg = new Algoritm(count, matr.GetMatr());
                 return;
             }
         }
@@ -59,14 +62,14 @@ namespace lab1
 
         private void but_wayOK_Click(object sender, EventArgs e)
         {
-             matr.Rand();
-             MessageBox.Show("Кратчайший путь по маршруту " + matr.getAllWay() + " равен " + matr.getWay().ToString());
+             alg.Leks();
+             MessageBox.Show("Кратчайший путь по маршруту " + alg.getAllWay() + " равен " + alg.getWay().ToString());
         }
 
         private void but_alg_Click(object sender, EventArgs e)
         {
-            string timeLeks = matr.Leks();
-            string timeRand = matr.Rand();
+            string timeLeks = alg.Leks();
+            string timeRand = alg.Rand();
             MessageBox.Show("Скорость работы лексикографического алгоритма - " + timeLeks + "\nСкорость работы случайного алгоритма - " + timeRand);
         }
     }
