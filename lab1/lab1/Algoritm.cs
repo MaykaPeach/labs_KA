@@ -103,7 +103,7 @@ namespace lab1
         }
 
 
-        /**/
+        /* Получение номера по перестановке */
         private int GetNumByP(int [] P)
         {
             HashSet<int> hs = new HashSet<int>();
@@ -133,17 +133,7 @@ namespace lab1
             for (int i = 1; i <= n; i++)
                 cnt = cnt * i;
             return cnt;
-        }
-
-        /* Перестановку в строку */
-        private string PtoString(int[] P)
-        {
-            string res = "";
-            for (int i = 0; i < size; i++)
-                res = res + Convert.ToString(P[i]) + " ";
-            return res;
-        }
-
+        } 
 
         /* Лексикографический алгорим для перестановок */
         public string Leks()
@@ -181,20 +171,20 @@ namespace lab1
             /* Чтобы рандом был максимально разным!!)))*/
             Random rand = new Random((DateTime.Now.Millisecond));
 
-            /* Храним случайные перестановки, как строки */
+            /* Храним случайные перестановки в сете */
             HashSet<int> hset = new HashSet<int>();
         
             /* Создаем первую перестановку */
             int[] P = new int[size];
             MakeFirst(ref P);
 
-            /* Пока словарь не заполнен всеми перестановками */
+            /* Пока сет не заполнен всеми перестановками */
             while (hset.Count < CountP(size))
             {
                 /* Подсчет пути для перестановки */
                 FindMinWay(P);
 
-                /* Добавление номера перестановки в словарь */
+                /* Добавление номера перестановки в сет */
                 hset.Add(GetNumByP(P));
 
                 /* Генерация новой случайной перестановки */
