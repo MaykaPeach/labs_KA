@@ -27,8 +27,11 @@ namespace lab2
         которые можно уложить в рюкзак вместимости maxW, используя только 
         items.Count(кол-во в списке) предметов.*/
 
-        public int dinamicAlg(List<Item> items)
+        public int dinamicAlg(List<Item> items, out string time)
         {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
             m = new int[items.Count+1, maxW+1];
 
             for (int j = 0; j <= maxW; j++) 
@@ -47,6 +50,10 @@ namespace lab2
                         m[i, j] = Math.Max(m[i - 1, j], m[i - 1, j - items[i-1].weigth] + items[i-1].price);
                 }
             }
+
+            sw.Stop();
+            time = (sw.ElapsedMilliseconds / 100.0).ToString();
+
             return m[items.Count, maxW];         
         }
 
@@ -64,8 +71,11 @@ namespace lab2
         }
 
         /* Жадный алгоритм */
-        public int greedyAlg(List<Item> items)
+        public int greedyAlg(List<Item> items, out string time)
         {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
             /*сначала максимальный вес в рюкзаке*/
             int max = maxW;
 
@@ -85,6 +95,10 @@ namespace lab2
                     bestItemsGreedy.Add(items[i]);
                 }
             }
+
+            sw.Stop();
+            time = (sw.ElapsedMilliseconds / 100.0).ToString();
+
             return sum;
         }
 
@@ -99,5 +113,15 @@ namespace lab2
         {
             return bestItemsGreedy;
         }
+
+        /* возвращает сумму веса вещей в списке */
+        public int getWeight(List<Item> items)
+        {
+            int weight = 0;
+            for (int i = 0; i < items.Count(); i++)
+                weight = weight + items[i].weigth;
+            return weight;
+        }
+
     }
 }

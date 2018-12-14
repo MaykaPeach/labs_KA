@@ -23,6 +23,11 @@ namespace lab2
             items = new List<Item>();
             addForm = new AddForm(items, LstVw);
             btn_Task.Enabled = false;
+
+            GrVw.RowCount = 3;
+            GrVw[0, 0].Value = "Макс. стоимость";
+            GrVw[0, 1].Value = "Вес";
+            GrVw[0, 2].Value = "Время";
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -57,14 +62,16 @@ namespace lab2
             else
             {
                 Backpack bp = new Backpack(maxW);
-                
+
+                string timeDin, timeGreedy;
+
                 /* Динамическое программирование*/
-                int maxSumDin = bp.dinamicAlg(items);
+                int maxSumDin = bp.dinamicAlg(items, out timeDin);
                 bp.thingsInBackpack(items.Count, items, maxW);
                 List<Item> solveDin = bp.getBestSetDin();
 
                 /* Жадный алгорим */
-                int maxSumGreedy = bp.greedyAlg(items);                
+                int maxSumGreedy = bp.greedyAlg(items, out timeGreedy);                
                 List<Item> solveGreedy = bp.getBestSetGreedy();
 
                 if (solveDin == null)
@@ -72,20 +79,30 @@ namespace lab2
                     MessageBox.Show("Нет решения!");
                 }
                 else
-                {
+                {               
                     /* Динамическое программирование*/
                     showItems(solveDin, LstVwDin);
+
+                    GrVw[1, 0].Value = maxSumDin;
+                    GrVw[1, 1].Value = bp.getWeight(solveDin);
+                    GrVw[1, 2].Value = timeDin;
 
                     /* Жадный алгорим */
                     showItems(solveGreedy, LstVwGreedy);
 
-                    MessageBox.Show("Динамическим программированием - " + maxSumDin + "\nЖадным алгоримом - " + maxSumGreedy, "Максимальная стоимость рюкзака");
+                    GrVw[2, 0].Value = maxSumGreedy;
+                    GrVw[2, 1].Value = bp.getWeight(solveGreedy);
+                    GrVw[2, 2].Value = timeGreedy;
+
                 }
             }
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
         {
+            for (int i = 1; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    GrVw[i, j].Value = "";
 
             LstVw.Items.Clear();
             LstVwDin.Items.Clear();

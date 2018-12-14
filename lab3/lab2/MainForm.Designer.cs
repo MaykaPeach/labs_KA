@@ -36,6 +36,7 @@
             this.col_weight = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col_price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pan_size = new System.Windows.Forms.Panel();
+            this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.pn_Task = new System.Windows.Forms.Panel();
             this.LstVwDin = new System.Windows.Forms.ListView();
@@ -49,15 +50,19 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lb_Greedy = new System.Windows.Forms.Label();
-            this.btn_Clear = new System.Windows.Forms.Button();
+            this.GrVw = new System.Windows.Forms.DataGridView();
+            this.Col_Val = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Din = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Greedy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.num_size)).BeginInit();
             this.pan_size.SuspendLayout();
             this.pn_Task.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrVw)).BeginInit();
             this.SuspendLayout();
             // 
             // num_size
             // 
-            this.num_size.Location = new System.Drawing.Point(15, 55);
+            this.num_size.Location = new System.Drawing.Point(15, 60);
             this.num_size.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -80,7 +85,7 @@
             // btn_Task
             // 
             this.btn_Task.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Task.Location = new System.Drawing.Point(15, 21);
+            this.btn_Task.Location = new System.Drawing.Point(15, 34);
             this.btn_Task.Name = "btn_Task";
             this.btn_Task.Size = new System.Drawing.Size(126, 42);
             this.btn_Task.TabIndex = 2;
@@ -97,7 +102,7 @@
             this.LstVw.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LstVw.Location = new System.Drawing.Point(3, 26);
             this.LstVw.Name = "LstVw";
-            this.LstVw.Size = new System.Drawing.Size(239, 307);
+            this.LstVw.Size = new System.Drawing.Size(239, 425);
             this.LstVw.TabIndex = 3;
             this.LstVw.UseCompatibleStateImageBehavior = false;
             this.LstVw.View = System.Windows.Forms.View.Details;
@@ -126,13 +131,24 @@
             this.pan_size.Controls.Add(this.num_size);
             this.pan_size.Location = new System.Drawing.Point(248, 26);
             this.pan_size.Name = "pan_size";
-            this.pan_size.Size = new System.Drawing.Size(159, 219);
+            this.pan_size.Size = new System.Drawing.Size(159, 307);
             this.pan_size.TabIndex = 4;
+            // 
+            // btn_Clear
+            // 
+            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Clear.Location = new System.Drawing.Point(15, 236);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(126, 43);
+            this.btn_Clear.TabIndex = 4;
+            this.btn_Clear.Text = "Очистить";
+            this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_add
             // 
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_add.Location = new System.Drawing.Point(15, 94);
+            this.btn_add.Location = new System.Drawing.Point(15, 113);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(126, 43);
             this.btn_add.TabIndex = 3;
@@ -144,9 +160,9 @@
             // 
             this.pn_Task.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pn_Task.Controls.Add(this.btn_Task);
-            this.pn_Task.Location = new System.Drawing.Point(248, 251);
+            this.pn_Task.Location = new System.Drawing.Point(248, 342);
             this.pn_Task.Name = "pn_Task";
-            this.pn_Task.Size = new System.Drawing.Size(159, 82);
+            this.pn_Task.Size = new System.Drawing.Size(159, 109);
             this.pn_Task.TabIndex = 5;
             // 
             // LstVwDin
@@ -237,22 +253,49 @@
             this.lb_Greedy.TabIndex = 9;
             this.lb_Greedy.Text = "Результат(жад. алг.):";
             // 
-            // btn_Clear
+            // GrVw
             // 
-            this.btn_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Clear.Location = new System.Drawing.Point(15, 157);
-            this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(126, 43);
-            this.btn_Clear.TabIndex = 4;
-            this.btn_Clear.Text = "Очистить";
-            this.btn_Clear.UseVisualStyleBackColor = true;
-            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
+            this.GrVw.AllowUserToAddRows = false;
+            this.GrVw.AllowUserToDeleteRows = false;
+            this.GrVw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GrVw.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Col_Val,
+            this.Col_Din,
+            this.Col_Greedy});
+            this.GrVw.Location = new System.Drawing.Point(413, 342);
+            this.GrVw.Name = "GrVw";
+            this.GrVw.ReadOnly = true;
+            this.GrVw.Size = new System.Drawing.Size(482, 109);
+            this.GrVw.TabIndex = 10;
+            // 
+            // Col_Val
+            // 
+            this.Col_Val.HeaderText = "Значения";
+            this.Col_Val.Name = "Col_Val";
+            this.Col_Val.ReadOnly = true;
+            // 
+            // Col_Din
+            // 
+            this.Col_Din.HeaderText = "Динамическое программирование";
+            this.Col_Din.MinimumWidth = 100;
+            this.Col_Din.Name = "Col_Din";
+            this.Col_Din.ReadOnly = true;
+            this.Col_Din.Width = 168;
+            // 
+            // Col_Greedy
+            // 
+            this.Col_Greedy.HeaderText = "Жадный алгоритм";
+            this.Col_Greedy.MinimumWidth = 100;
+            this.Col_Greedy.Name = "Col_Greedy";
+            this.Col_Greedy.ReadOnly = true;
+            this.Col_Greedy.Width = 170;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 338);
+            this.ClientSize = new System.Drawing.Size(898, 455);
+            this.Controls.Add(this.GrVw);
             this.Controls.Add(this.lb_Greedy);
             this.Controls.Add(this.LstVwGreedy);
             this.Controls.Add(this.lb_Din);
@@ -270,6 +313,7 @@
             this.pan_size.ResumeLayout(false);
             this.pan_size.PerformLayout();
             this.pn_Task.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrVw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,6 +343,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Label lb_Greedy;
         private System.Windows.Forms.Button btn_Clear;
+        private System.Windows.Forms.DataGridView GrVw;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Val;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Din;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Greedy;
     }
 }
 
