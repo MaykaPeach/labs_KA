@@ -178,8 +178,11 @@ namespace lab1
             int[] P = new int[size];
             MakeFirst(ref P);
 
+            /* Количество перестановок */
+            int cntP = CountP(size);
+
             /* Пока сет не заполнен всеми перестановками */
-            while (hset.Count < CountP(size))
+            while (hset.Count < cntP)
             {
                 /* Подсчет пути для перестановки */
                 FindMinWay(P);
@@ -188,7 +191,7 @@ namespace lab1
                 hset.Add(GetNumByP(P));
 
                 /* Генерация новой случайной перестановки */
-                if (hset.Count < CountP(size))
+                if (hset.Count < cntP)
                 {
                     while (hset.Contains(GetNumByP(P)))
                     {

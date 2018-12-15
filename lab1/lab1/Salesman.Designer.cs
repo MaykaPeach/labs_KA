@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pan_count = new System.Windows.Forms.Panel();
+            this.num_count = new System.Windows.Forms.NumericUpDown();
             this.lab_count = new System.Windows.Forms.Label();
             this.but_countOK = new System.Windows.Forms.Button();
             this.radBut_hand = new System.Windows.Forms.RadioButton();
@@ -42,14 +43,13 @@
             this.pan_alg = new System.Windows.Forms.Panel();
             this.but_alg = new System.Windows.Forms.Button();
             this.GrVw = new System.Windows.Forms.DataGridView();
-            this.num_count = new System.Windows.Forms.NumericUpDown();
             this.pan_count.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_count)).BeginInit();
             this.pan_select.SuspendLayout();
             this.grи_select.SuspendLayout();
             this.pan_way.SuspendLayout();
             this.pan_alg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrVw)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_count)).BeginInit();
             this.SuspendLayout();
             // 
             // pan_count
@@ -62,6 +62,24 @@
             this.pan_count.Name = "pan_count";
             this.pan_count.Size = new System.Drawing.Size(180, 83);
             this.pan_count.TabIndex = 0;
+            // 
+            // num_count
+            // 
+            this.num_count.Location = new System.Drawing.Point(25, 22);
+            this.num_count.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.num_count.Name = "num_count";
+            this.num_count.Size = new System.Drawing.Size(120, 20);
+            this.num_count.TabIndex = 8;
+            this.num_count.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.num_count.ValueChanged += new System.EventHandler(this.num_count_ValueChanged);
             // 
             // lab_count
             // 
@@ -127,6 +145,7 @@
             this.radBut_rand.TabStop = true;
             this.radBut_rand.Text = "случайно (random)";
             this.radBut_rand.UseVisualStyleBackColor = true;
+            this.radBut_rand.CheckedChanged += new System.EventHandler(this.radRand_hand_CheckedChanged);
             // 
             // lab_choose
             // 
@@ -191,15 +210,9 @@
             this.GrVw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrVw.Location = new System.Drawing.Point(187, 3);
             this.GrVw.Name = "GrVw";
+            this.GrVw.RowHeadersWidth = 20;
             this.GrVw.Size = new System.Drawing.Size(444, 387);
             this.GrVw.TabIndex = 6;
-            // 
-            // num_count
-            // 
-            this.num_count.Location = new System.Drawing.Point(25, 22);
-            this.num_count.Name = "num_count";
-            this.num_count.Size = new System.Drawing.Size(120, 20);
-            this.num_count.TabIndex = 8;
             // 
             // Salesman
             // 
@@ -212,10 +225,13 @@
             this.Controls.Add(this.pan_select);
             this.Controls.Add(this.pan_count);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(649, 431);
+            this.MinimumSize = new System.Drawing.Size(649, 431);
             this.Name = "Salesman";
             this.Text = "Коммивояжёр";
             this.pan_count.ResumeLayout(false);
             this.pan_count.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_count)).EndInit();
             this.pan_select.ResumeLayout(false);
             this.pan_select.PerformLayout();
             this.grи_select.ResumeLayout(false);
@@ -223,7 +239,6 @@
             this.pan_way.ResumeLayout(false);
             this.pan_alg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GrVw)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_count)).EndInit();
             this.ResumeLayout(false);
 
         }

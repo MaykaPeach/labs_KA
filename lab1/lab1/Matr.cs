@@ -33,7 +33,7 @@ namespace lab1
             GrVw.ReadOnly = false;
             for (int i = 0; i < size; i++)
                 for (int j = 0; j <= i; j++)
-                    GrVw.Rows[i].Cells[j].ReadOnly = true;
+                    GrVw[j, i].ReadOnly = true;
         }
 
         //заполнение матрицы из DataGridView
@@ -46,6 +46,7 @@ namespace lab1
                 {
                     txtCell = GrVw.Rows[i].Cells[j];
                     string s = txtCell.Value.ToString();
+                    //string s = GrVw[j, i].Value.ToString();
                     if (s == "")
                         matrix[j, i] = matrix[i, j] = 0;
                     else

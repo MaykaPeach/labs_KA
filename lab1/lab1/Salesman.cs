@@ -57,7 +57,13 @@ namespace lab1
 
         private void radBut_hand_CheckedChanged(object sender, EventArgs e)
         {
+            but_wayOK.Enabled = but_alg.Enabled = false;
             matr.Select(GrVw);
+        }
+
+        private void radRand_hand_CheckedChanged(object sender, EventArgs e)
+        {
+            but_wayOK.Enabled = but_alg.Enabled = false;
         }
 
         private void but_wayOK_Click(object sender, EventArgs e)
@@ -71,6 +77,12 @@ namespace lab1
             string timeLeks = alg.Leks();
             string timeRand = alg.Rand();
             MessageBox.Show("Скорость работы лексикографического алгоритма - " + timeLeks + "\nСкорость работы случайного алгоритма - " + timeRand);
+        }
+
+        private void num_count_ValueChanged(object sender, EventArgs e)
+        {
+            GrVw.DataSource = null;
+            but_wayOK.Enabled = but_alg.Enabled = pan_select.Enabled = false;
         }
     }
 
